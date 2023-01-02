@@ -1,0 +1,29 @@
+kind: containerapp
+location: northeurope
+name: deploy-options-luckynum
+resourceGroup: ContainerAppDeployment
+type: Microsoft.Web/containerApps
+tags:
+    tagname: value
+properties:
+    kubeEnvironmentId: /subscriptions/490eb18c-41ab-4b43-bfe8-334a4d8c8a33/resourceGroups/ContainerAppDeployment/providers/Microsoft.Web/kubeEnvironments/deploy-app-environment
+    configuration:
+        activeRevisionsMode: Multiple
+        ingress:
+            external: False
+            allowInsecure: false
+            targetPort: 80
+            traffic:
+              - latestRevision: true
+                weight: 100
+            transport: Auto
+    template:
+        containers:
+        - image: docker.io/filterniels/deploy-options-luckynum:latest
+          name: deploy-options-luckynum
+          resources:
+              cpu: 0.5
+              memory: 1Gi
+        scale:
+            minReplicas: 0
+            maxReplicas: 5

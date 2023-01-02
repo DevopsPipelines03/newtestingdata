@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lucknumberapp
+spec:
+  selector:
+    matchLabels:
+      app: lucky-number-app
+  template:
+    metadata:
+      labels:
+        app: lucky-number-app
+    spec:
+      containers:
+      - name: lucky-number-app
+        image: docker.io/filterniels/deploy-options-luckynum:latest
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lucky-number-app
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: lucky-number-app
+spec:
+  type: ClusterIP
+  selector:
+    app: lucky-number-app
+  ports:
+  - port: 80
+    targetPort: 80

@@ -1,0 +1,9 @@
+<h1 id="tableLabel">Lucky Number Generator</h1>
+
+<p>This is a complex algorithm that calculates the lucky number for you for the day</p>
+
+<p *ngIf="!luckyNumberResult"><em>Loading...</em></p>
+
+<div style="font-size: 100pt;" *ngIf="luckyNumberResult">
+  {{ luckyNumberResult }}
+</div>

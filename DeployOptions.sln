@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{63F854B7-772E-4247-9A27-11FBF1FFF7C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyNumberGenerator", "LuckyNumberGenerator\LuckyNumberGenerator.csproj", "{464683CB-69B1-4507-8C3F-2F3B139AA6AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{63201F37-6F04-4FFB-83BB-56D2F70CE92E}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		main.bicep = main.bicep
+		aks.bicep = aks.bicep
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63F854B7-772E-4247-9A27-11FBF1FFF7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F854B7-772E-4247-9A27-11FBF1FFF7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F854B7-772E-4247-9A27-11FBF1FFF7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F854B7-772E-4247-9A27-11FBF1FFF7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{464683CB-69B1-4507-8C3F-2F3B139AA6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{464683CB-69B1-4507-8C3F-2F3B139AA6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{464683CB-69B1-4507-8C3F-2F3B139AA6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{464683CB-69B1-4507-8C3F-2F3B139AA6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal

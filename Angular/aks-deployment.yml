@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end-app
+spec:
+  selector:
+    matchLabels:
+      app: front-end-app
+  template:
+    metadata:
+      labels:
+        app: front-end-app
+    spec:
+      containers:
+      - name: front-end-app
+        image: docker.io/filterniels/deploy-options-angular:latest
+        imagePullPolicy: Always
+        env:
+        - name: API_URL
+          value: http://webapi-app.eastus.cloudapp.azure.com/
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-end-app
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: front-end-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: front-end-app
+  ports:
+  - port: 80
+    targetPort: 80

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapi
+spec:
+  selector:
+    matchLabels:
+      app: webapi-app
+  template:
+    metadata:
+      labels:
+        app: webapi-app
+    spec:
+      containers:
+      - name: webapi-app
+        image: docker.io/filterniels/deploy-options-webapi:latest
+        imagePullPolicy: Always
+        env:
+        - name: LuckyNumberService__ApiUrl
+          value: http://lucky-number-app.default.svc.cluster.local/
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapi-app
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: webapi-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: webapi-app
+  ports:
+  - port: 80
+    targetPort: 80
